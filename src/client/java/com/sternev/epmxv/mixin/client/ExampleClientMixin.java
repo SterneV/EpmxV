@@ -1,4 +1,4 @@
-package sterne.epmxv.mixin.client;
+package com.sternev.epmxv.mixin.client;
 
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;

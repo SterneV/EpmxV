@@ -16,22 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			{
-				"value": "sterne.epmxv.EpmxV",
-				"adapter": "kotlin"
-			}
+			"com.sternev.epmxv.EpmxV"
 		],
 		"client": [
-			{
-				"value": "sterne.epmxv.EpmxVClient",
-				"adapter": "kotlin"
-			}
+			"com.sternev.epmxv.EpmxVClient"
 		],
 		"fabric-datagen": [
-			{
-				"value": "sterne.epmxv.EpmxVDataGenerator",
-				"adapter": "kotlin"
-			}
+			"com.sternev.epmxv.EpmxVDataGenerator"
 		]
 	},
 	"mixins": [
@@ -45,8 +36,7 @@
 		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
-		"fabric-api": "*",
-		"fabric-language-kotlin": "*"
+		"fabric-api": "*"
 	},
 	"suggests": {
 		"another-mod": "*"

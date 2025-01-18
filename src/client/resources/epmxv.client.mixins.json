@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "sterne.epmxv.mixin.client",
+	"package": "com.sternev.epmxv.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
 		"ExampleClientMixin"
