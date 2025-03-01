@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "epmxv:item/suspicious_substance"
+    "layer0": "epmxv:item/forbidden_fruit"
   }
 }
