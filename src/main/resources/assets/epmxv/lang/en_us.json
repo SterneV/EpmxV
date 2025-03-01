@@ -1,3 +1,5 @@
 {
-  "item.epmxv.suspicious_substance": "Suspicious Substance"
+  "item.epmxv.forbidden_fruit": "Forbidden Fruit",
+  "itemGroup.epmxv": "EpmxV",
+  "block.epmxv.shrine": "Shrine"
 }
