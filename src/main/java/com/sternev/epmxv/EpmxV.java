@@ -19,5 +19,6 @@ public class EpmxV implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		ModItems.initialize();
+		ModBlocks.initialize();
 	}
 }
