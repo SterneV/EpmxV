@@ -1,5 +1,11 @@
 {
   "item.epmxv.forbidden_fruit": "Forbidden Fruit",
   "itemGroup.epmxv": "EpmxV",
-  "item.epmxv.shrine": "Shrine"
+  "item.epmxv.shrine": "Shrine",
+  "item.epmxv.divine_sword": "Divine Sword",
+  "item.epmxv.divine_helmet": "Divine Helmet",
+  "item.epmxv.divine_chestplate": "Divine Chestplate",
+  "item.epmxv.divine_leggings": "Divine Leggings",
+  "item.epmxv.divine_boots": "Divine Boots"
+
 }
