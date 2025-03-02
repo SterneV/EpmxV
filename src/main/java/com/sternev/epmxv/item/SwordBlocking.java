@@ -1,4 +1,4 @@
-package com.sternev.epmxv;
+package com.sternev.epmxv.item;
 
 public class SwordBlocking {
 }

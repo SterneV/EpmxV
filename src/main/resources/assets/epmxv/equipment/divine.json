@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "epmxv:divine"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "epmxv:divine"
+      }
+    ]
+  }
+}

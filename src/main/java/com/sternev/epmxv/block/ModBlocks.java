@@ -1,5 +1,6 @@
-package com.sternev.epmxv;
+package com.sternev.epmxv.block;
 
+import com.sternev.epmxv.EpmxV;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
