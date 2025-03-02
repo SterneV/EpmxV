@@ -15,7 +15,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -44,8 +43,6 @@ public class ModItems {
             .build();
 
 
-    // Creates a unique key and identifier for the item, defines its properties,
-    // and registers it in the Minecraft item registry.
     // to now add a new item simply follow the code below and change "forbidden fruit" to new item name using item.settings() to determine what type of item it is "food, tool etc see docs https://docs.fabricmc.net/develop/items/first-item)
     public static final Item FORBIDDEN_FRUIT = register("forbidden_fruit"
             , Item::new, new Item.Settings().food(POISON_FOOD_COMPONENT, POISON_FOOD_CONSUMABLE_COMPONENT));
