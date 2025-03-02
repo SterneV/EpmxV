@@ -1,5 +1,6 @@
 package com.sternev.epmxv;
 
+import com.sternev.epmxv.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.component.type.ConsumableComponent;
@@ -7,27 +8,32 @@ import net.minecraft.component.type.ConsumableComponents;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.consume.ApplyEffectsConsumeEffect;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.function.Function;
+
 public class ModItems {
-    public static Item register(Item item, RegistryKey<Item> registryKey) {
+    public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
+        // Create the item key.
+        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(EpmxV.MOD_ID, name));
+
+        // Create the item instance.
+        Item item = itemFactory.apply(settings.registryKey(itemKey));
+
         // Register the item.
-        Item registeredItem = Registry.register(Registries.ITEM, registryKey.getValue(), item);
+        Registry.register(Registries.ITEM, itemKey, item);
 
-        // Return the registered item!
-        return registeredItem;
+        return item;
     }
-
 
     public static final ConsumableComponent POISON_FOOD_CONSUMABLE_COMPONENT = ConsumableComponents.food()
             // The duration is in ticks, 20 ticks = 1 second
@@ -37,14 +43,31 @@ public class ModItems {
             .alwaysEdible()
             .build();
 
+
     // Creates a unique key and identifier for the item, defines its properties,
     // and registers it in the Minecraft item registry.
-    public static final RegistryKey<Item>FORBIDDEN_FRUIT_KEY  = RegistryKey.of(RegistryKeys.ITEM,
-            Identifier.of(EpmxV.MOD_ID, "forbidden_fruit"));
-    public static final Item FORBIDDEN_FRUIT = register(
-            new Item(new Item.Settings().food(POISON_FOOD_COMPONENT, POISON_FOOD_CONSUMABLE_COMPONENT).registryKey(FORBIDDEN_FRUIT_KEY)),
-            FORBIDDEN_FRUIT_KEY
-    );
+    public static final Item FORBIDDEN_FRUIT = register("forbidden_fruit"
+            , Item::new, new Item.Settings().food(POISON_FOOD_COMPONENT, POISON_FOOD_CONSUMABLE_COMPONENT));
+
+    public static final Item DIVINE_SWORD = register("divine_sword"
+            ,settings -> new SwordItem(ToolMaterial.GOLD, 10f, -2.3f, settings), new Item.Settings());
+
+    public static final Item DIVINE_CHESTPLATE = register("divine_chestplate"
+            ,settings -> new ArmorItem(DivineArmorMaterial.INSTANCE, EquipmentType.CHESTPLATE, settings),
+            new Item.Settings().maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(DivineArmorMaterial.BASE_DURABILITY)));
+
+    public static final Item DIVINE_HELMET = register("divine_helmet"
+            ,settings -> new ArmorItem(DivineArmorMaterial.INSTANCE, EquipmentType.HELMET, settings),
+            new Item.Settings().maxDamage(EquipmentType.HELMET.getMaxDamage(DivineArmorMaterial.BASE_DURABILITY)));
+
+    public static final Item DIVINE_LEGGINGS = register("divine_leggings"
+            ,settings -> new ArmorItem(DivineArmorMaterial.INSTANCE, EquipmentType.LEGGINGS, settings),
+            new Item.Settings().maxDamage(EquipmentType.LEGGINGS.getMaxDamage(DivineArmorMaterial.BASE_DURABILITY)));
+
+    public static final Item DIVINE_BOOTS = register("divine_boots"
+            ,settings -> new ArmorItem(DivineArmorMaterial.INSTANCE, EquipmentType.BOOTS, settings),
+            new Item.Settings().maxDamage(EquipmentType.BOOTS.getMaxDamage(DivineArmorMaterial.BASE_DURABILITY)));
+
 
 
 
@@ -57,9 +80,13 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.FORBIDDEN_FRUIT);
             itemGroup.add(ModBlocks.SHRINE.asItem());
+            itemGroup.add(ModItems.DIVINE_SWORD);
+            itemGroup.add(ModItems.DIVINE_HELMET);
+            itemGroup.add(ModItems.DIVINE_CHESTPLATE);
+            itemGroup.add(ModItems.DIVINE_LEGGINGS);
+            itemGroup.add(ModItems.DIVINE_BOOTS);
             //..
         });
-
     }
     //custom group register
     public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(EpmxV.MOD_ID, "item_group"));
@@ -67,5 +94,6 @@ public class ModItems {
             .icon(() -> new ItemStack(ModItems.FORBIDDEN_FRUIT))
             .displayName(Text.translatable("itemGroup.epmxv"))
             .build();
+
 }
 
