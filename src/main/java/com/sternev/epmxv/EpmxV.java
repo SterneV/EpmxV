@@ -1,5 +1,7 @@
 package com.sternev.epmxv;
 
+import com.sternev.epmxv.ModItems;
+import com.sternev.epmxv.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
